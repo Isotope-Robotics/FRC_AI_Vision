@@ -3,17 +3,35 @@ import sys
 import time
 import math
 import logging
+import subprocess
 
 # Network Tables Dependencies
-from networktables import NetworkTables
-
+try:
+    from networktables import NetworkTables
+except:
+    print("NT is not Installed...Installing NT")
+    subprocess.call(sys.executable, "-m", "pip install pynetworktables")
+    from networktables import NetworkTables
+    
 # OpenCV Dependencies
-import cv2 as cv
+try: 
+    import cv2 as cv
+except:
+    print("OpenCV is not Installed...Installing OpenCV")
+    subprocess.call(sys.executable, "-m", "pip install opencv-python")
+    import cv2 as cv
+    
+# AI Model Dependencies    
+try:
+    from ultralytics import YOLO
+except:
+    print("YOLO is not Installed...Installing YOLO")
+    subprocess.call(sys.executable, "-m", "pip install ultralytics")
+    from ultralytics import YOLO
 
-# AI Model Dependencies
-from ultralytics import YOLO
 
 logging.basicConfig(level=logging.DEBUG)
+
 
 # Checks if IP is specified
 if len(sys.argv) != 2:
