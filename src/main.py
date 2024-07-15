@@ -1,33 +1,19 @@
 # Base Dependencies
 import sys
-import time
 import math
 import logging
-import subprocess
 
 # Network Tables Dependencies
-try:
-    from networktables import NetworkTables
-except:
-    print("NT is not Installed...Installing NT")
-    subprocess.call(sys.executable, "-m", "pip install pynetworktables")
-    from networktables import NetworkTables
+from networktables import NetworkTables
+
     
 # OpenCV Dependencies
-try: 
-    import cv2 as cv
-except:
-    print("OpenCV is not Installed...Installing OpenCV")
-    subprocess.call(sys.executable, "-m", "pip install opencv-python")
-    import cv2 as cv
+import cv2 as cv
+
     
 # AI Model Dependencies    
-try:
-    from ultralytics import YOLO
-except:
-    print("YOLO is not Installed...Installing YOLO")
-    subprocess.call(sys.executable, "-m", "pip install ultralytics")
-    from ultralytics import YOLO
+
+from ultralytics import YOLO
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -51,7 +37,7 @@ stream = cv.VideoCapture(0)
 
 # AI Setup
 # Model
-model = YOLO("yolov8n.pt")
+model = YOLO("2024-note.pt")
 # Classes for Detection
 classNames = ["note"]
 
