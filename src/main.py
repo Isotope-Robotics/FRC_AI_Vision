@@ -37,7 +37,7 @@ stream = cv.VideoCapture(0)
 
 # AI Setup
 # Model
-model = YOLO("2024-note.pt")
+model = YOLO("../models/2024-note.pt")
 # Classes for Detection
 classNames = ["note"]
 
@@ -77,6 +77,7 @@ while (True):
             cv.putText(img, classNames[cls], org, font, fontScale, color, thickness)
 
     cv.imshow('Webcam', img)
+    
     if cv.waitKey(1) == ord('q'):
         break
 
